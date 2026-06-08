@@ -31,7 +31,21 @@ jobs:
         with:
           tagName: ${{ github.ref_name }}
           releaseName: 'Buoy ${{ github.ref_name }}'
-          releaseBody: 'See the assets to download and install this version.'
+          releaseBody: |
+            Keep your bots running. Without the terminal.
+
+            Buoy handles starting, stopping, monitoring, and auto-restarting your bots so you can focus on writing code.
+
+            ## Quickstart
+            1. Download the `.msi` installer below
+            2. Install and launch Buoy
+            3. Click **Add Bot**, point to your project folder, and hit **Start**
+
+            ## What's Included
+            - `.msi` installer — standard Windows install
+            - `.exe` (NSIS) — single-file portable installer
+
+            Full details at [github.com/newt-dev-sudo/Buoy](https://github.com/newt-dev-sudo/Buoy).
           releaseDraft: true
           prerelease: false
           args: '--target x86_64-pc-windows-msvc'
