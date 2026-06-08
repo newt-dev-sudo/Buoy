@@ -1,51 +1,71 @@
-<div align="center">
-  <img src="buoy-logo.png" alt="Buoy Logo" width="128">
-  <h1>Buoy</h1>
-  <p><strong>Your bots, managed.</strong></p>
+<p align="center">
+  <img src="buoy-logo.png" alt="Buoy" width="128">
+</p>
 
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square">
-  <img alt="Platform" src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square">
+<h1 align="center">Buoy</h1>
 
-  <br><br>
-</div>
+<p align="center">
+  Keep your bots running. Without the terminal.
+</p>
+
+<p align="center">
+  <a href="../../releases"><img alt="Releases" src="https://img.shields.io/github/v/release/newt-dev-sudo/Buoy?include_prereleases&sort=semver&style=flat-square"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square"></a>
+  <a href="#"><img alt="Platform" src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square"></a>
+</p>
+
+<p align="center">
+  <a href="../../releases"><strong>Download</strong></a> ·
+  <a href="CONTRIBUTING.md">Contributing</a> ·
+  <a href="CODE_OF_CONDUCT.md">Code of Conduct</a>
+</p>
+
+---
 
 ## What is Buoy?
 
-You wrote a bot. Now you need to keep it running. Opening a terminal, running `node index.js`, and praying it doesn't crash is not a workflow. Buoy is a desktop app that handles all of that for you — start, stop, monitor, and auto-restart your bots without touching the command line.
+You wrote a Discord bot, a webhook service, or a background worker. Now you need it to stay online. Buoy is a desktop app that handles the boring parts — starting, stopping, monitoring, and restarting your bots — so you can focus on writing code.
 
-## What Buoy Does
+## Quickstart
 
-- **Keeps bots alive** — If your bot crashes, Buoy restarts it automatically
-- **One-click start/stop** — No more terminals. No more `Ctrl+C` accidents
-- **Installs dependencies** — `npm install` or `pip install` from a button click
-- **Logs at a glance** — Real-time stdout and stderr, with auto-cleanup after 7 days
-- **Secure env vars** — API tokens and secrets encrypted in the app, injected at runtime
-- **Minimize to tray** — Close the window, your bots keep running in the background
-- **Auto-restore on launch** — Reopen Buoy and it picks up where you left off
+1. **Download** the latest installer from [Releases](../../releases)
+2. **Add Bot** → point to your project folder
+3. **Set env vars** → tokens, API keys, secrets
+4. **Start** → your bot runs, and stays running
 
-## Getting Started
+## Features
 
-1. Download and install Buoy
-2. Click **Add Bot** and point it to your project folder
-3. Set your environment variables (tokens, API keys)
-4. Hit **Start** — done.
+| Feature | What it means |
+|---------|---------------|
+| **Auto-restart** | Bot crashes? Buoy brings it back with backoff. |
+| **One-click control** | Start, stop, restart — no terminal needed. |
+| **Dependency install** | `npm install` or `pip install` from the UI. |
+| **Live logs** | stdout/stderr in real time, with 7-day retention. |
+| **Secure env vars** | Tokens encrypted locally, injected at runtime. |
+| **System tray** | Close the window. Bots keep running. |
+| **Persistent state** | Reopen Buoy — bots pick up where they left off. |
 
 ## Requirements
 
-- Node.js or Python installed on your system (for running bots)
-- Your bot code with a valid `package.json` or `requirements.txt`
+- Node.js or Python installed on your system
+- A `package.json` or `requirements.txt` in your bot folder
 
-## Download
+## Platform Support
 
-Grab the latest installer from the [Releases](../../releases) page.
-
-> **Windows**: Run the `.msi` installer and launch Buoy from the Start menu.  
-> **macOS / Linux**: See releases for `.dmg` and `.AppImage` builds.
+| Platform | Status | Installer |
+|----------|--------|-----------|
+| Windows | ✅ | `.msi`, `.exe` |
+| macOS | ✅ | `.dmg` |
+| Linux | ✅ | `.deb`, `.AppImage` |
 
 ## Screenshots
 
 <!-- TODO: Add screenshots -->
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
-MIT
+[MIT](LICENSE)
