@@ -27,25 +27,25 @@ function BotDetail() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 bg-surface-raised/50">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between px-5 py-3 border-b border-border-subtle">
+        <div className="flex items-center gap-3">
           <Link
             to="/dashboard"
-            className="flex items-center justify-center w-9 h-9 rounded-lg bg-surface-hover text-text-secondary hover:text-text-primary hover:bg-surface-active transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-md text-text-muted hover:text-text-primary hover:bg-surface-hover/50 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
           </Link>
-          <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold ${
-              bot?.status === "running" ? "bg-emerald-500/15 text-emerald-400" : "bg-surface-base text-text-muted"
+          <div className="flex items-center gap-2.5">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold ${
+              bot?.status === "running" ? "bg-emerald-500/10 text-emerald-400" : "bg-surface-base text-text-muted"
             }`}>
               {bot?.name ? bot.name.slice(0, 1).toUpperCase() : "?"}
             </div>
             <div>
-              <h1 className="text-base font-semibold text-text-primary">{bot?.name || botId}</h1>
-              <div className="flex items-center gap-2 mt-0.5">
+              <h1 className="text-[13px] font-semibold text-text-primary">{bot?.name || botId}</h1>
+              <div className="flex items-center gap-2 mt-px">
                 {bot && <BotStatusBadge status={bot.status} />}
-                <span className="text-xs text-text-muted font-mono">{bot?.entryPoint}</span>
+                <span className="text-[11px] text-text-muted font-mono">{bot?.entryPoint}</span>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@ function BotDetail() {
       </div>
 
       {/* Tabs */}
-      <nav className="flex px-6 bg-surface-raised/30">
+      <nav className="flex px-5 gap-1 border-b border-border-subtle">
         {tabs.map((tab) => {
           const isActive = path === tab.to.replace("$botId", botId) || (tab.to === "/bots/$botId" && path === `/bots/${botId}`);
           return (
@@ -62,17 +62,14 @@ function BotDetail() {
               key={tab.label}
               to={tab.to}
               params={{ botId }}
-              className={`relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
+              className={`relative flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium rounded-md transition-colors ${
                 isActive
-                  ? "text-accent"
-                  : "text-text-secondary hover:text-text-primary"
+                  ? "text-accent bg-accent-subtle"
+                  : "text-text-muted hover:text-text-secondary hover:bg-surface-hover/30"
               }`}
             >
-              <tab.icon className={`w-4 h-4 ${isActive ? "text-accent" : "text-text-muted"}`} />
+              <tab.icon className={`w-3.5 h-3.5 ${isActive ? "text-accent" : "text-text-muted"}`} />
               {tab.label}
-              {isActive && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent rounded-t-full" />
-              )}
             </Link>
           );
         })}

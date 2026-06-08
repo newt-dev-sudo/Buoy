@@ -13,6 +13,7 @@ export default {
           overlay: 'var(--surface-overlay)',
           hover: 'var(--surface-hover)',
           active: 'var(--surface-active)',
+          card: 'var(--surface-card)',
         },
         border: {
           subtle: 'var(--border-subtle)',

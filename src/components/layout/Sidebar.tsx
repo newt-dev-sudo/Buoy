@@ -8,48 +8,46 @@ export function Sidebar() {
   const isActive = (to: string) => path === to || path.startsWith(to + "/");
 
   return (
-    <aside className="flex flex-col w-[72px] bg-surface-raised items-center py-3">
-      {/* App logo — single branding, no text */}
-      <div className="mb-6">
-        <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center">
-          <Ship className="w-5 h-5 text-accent" />
+    <aside className="flex flex-col w-sidebar items-center py-4 border-r border-border-subtle bg-surface-base">
+      {/* App logo */}
+      <div className="mb-8">
+        <div className="w-9 h-9 rounded-lg bg-accent-subtle flex items-center justify-center">
+          <Ship className="w-[18px] h-[18px] text-accent" />
         </div>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 flex flex-col gap-1 w-full px-2">
-        <NavButton to="/dashboard" active={isActive("/dashboard")} icon={Container} label="Fleet" title="View all your bots and their status" />
-        <NavButton to="/bots/new" active={isActive("/bots/new")} icon={Plus} label="Add" title="Create a new bot from a folder or Git repo" />
+      <nav className="flex-1 flex flex-col gap-2 w-full px-2">
+        <NavButton to="/dashboard" active={isActive("/dashboard")} icon={Container} label="Fleet" />
+        <NavButton to="/bots/new" active={isActive("/bots/new")} icon={Plus} label="Add" />
       </nav>
 
-      <div className="flex flex-col gap-1 w-full px-2">
-        <NavButton to="/help" active={isActive("/help")} icon={HelpCircle} label="Help" title="Guides, tokens, and troubleshooting" />
+      <div className="flex flex-col gap-2 w-full px-2 mb-2">
+        <NavButton to="/help" active={isActive("/help")} icon={HelpCircle} label="Help" />
       </div>
 
-      {/* Bottom */}
-      <div className="flex flex-col gap-1 w-full px-2">
-        <NavButton to="/settings" active={isActive("/settings")} icon={Settings} label="Settings" title="Preferences, runtime paths, and data" />
+      <div className="flex flex-col gap-2 w-full px-2">
+        <NavButton to="/settings" active={isActive("/settings")} icon={Settings} label="Settings" />
       </div>
     </aside>
   );
 }
 
-function NavButton({ to, active, icon: Icon, label, title }: { to: string; active: boolean; icon: React.FC<{ className?: string }>; label: string; title?: string }) {
+function NavButton({ to, active, icon: Icon, label }: { to: string; active: boolean; icon: React.FC<{ className?: string }>; label: string }) {
   return (
     <Link
       to={to}
-      className={`relative flex flex-col items-center gap-1 py-2.5 rounded-xl transition-all ${
+      className={`relative flex items-center justify-center w-full h-9 rounded-lg transition-all ${
         active
-          ? "bg-surface-active text-accent"
-          : "text-text-muted hover:text-text-primary hover:bg-surface-hover"
+          ? "text-accent bg-surface-active"
+          : "text-text-muted hover:text-text-secondary hover:bg-surface-hover/60"
       }`}
-      title={title || label}
+      title={label}
     >
       {active && (
-        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-accent rounded-r-full" />
+        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 bg-accent rounded-r-full" />
       )}
-      <Icon className="w-5 h-5" />
-      <span className="text-[10px] font-medium">{label}</span>
+      <Icon className="w-[18px] h-[18px]" />
     </Link>
   );
 }

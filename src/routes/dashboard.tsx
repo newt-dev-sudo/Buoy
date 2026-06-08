@@ -58,31 +58,31 @@ function Dashboard() {
   }
 
   return (
-    <div className="p-8 space-y-8">
-      <div className="flex items-end justify-between">
+    <div className="p-6 space-y-6">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary">Dashboard</h1>
-          <p className="text-sm text-text-secondary mt-1">Manage your bots in one place</p>
+          <h1 className="text-xl font-semibold text-text-primary">Dashboard</h1>
+          <p className="text-[13px] text-text-muted mt-0.5">Manage your bots in one place</p>
         </div>
         <Link
           to="/bots/new"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-accent-fg text-sm font-medium hover:bg-accent-hover transition-colors"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-accent text-accent-fg text-[13px] font-medium hover:bg-accent-hover transition-colors"
         >
           <Plus className="w-4 h-4" />
           Add bot
         </Link>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        <StatCard label="Total" value={total} icon={Activity} color="text-text-primary" bg="bg-surface-raised" title="All bots registered in Buoy" />
-        <StatCard label="Running" value={running} icon={PlayCircle} color="text-status-running" bg="bg-emerald-500/10" title="Bots currently active and processing" />
-        <StatCard label="Stopped" value={stopped} icon={PauseCircle} color="text-status-stopped" bg="bg-surface-raised" title="Bots manually stopped or never started" />
-        <StatCard label="Crashed" value={crashed} icon={AlertTriangle} color="text-status-crashed" bg="bg-red-500/10" title="Bots that exited unexpectedly" />
+      <div className="grid grid-cols-4 gap-3">
+        <StatCard label="Total" value={total} icon={Activity} color="text-text-primary" dot="bg-text-muted" />
+        <StatCard label="Running" value={running} icon={PlayCircle} color="text-status-running" dot="bg-status-running" />
+        <StatCard label="Stopped" value={stopped} icon={PauseCircle} color="text-text-muted" dot="bg-status-stopped" />
+        <StatCard label="Crashed" value={crashed} icon={AlertTriangle} color="text-status-crashed" dot="bg-status-crashed" />
       </div>
 
       <div>
-        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">Your bots</h2>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <h2 className="text-[11px] font-semibold text-text-muted uppercase tracking-wide mb-3">Bots</h2>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
           {bots.map((bot) => (
             <BotCard key={bot.id} bot={bot} />
           ))}
@@ -92,16 +92,17 @@ function Dashboard() {
   );
 }
 
-function StatCard({ label, value, icon: Icon, color, bg, title }: { label: string; value: number; icon: React.FC<{ className?: string }>; color: string; bg: string; title?: string }) {
+function StatCard({ label, value, icon: Icon, color, dot }: { label: string; value: number; icon: React.FC<{ className?: string }>; color: string; dot: string }) {
   return (
-    <div className={`flex items-center gap-4 p-5 rounded-xl ${bg}`} title={title}>
-      <div className={`p-2.5 rounded-lg bg-surface-base ${color}`}>
-        <Icon className="w-5 h-5" />
+    <div className="flex items-center gap-3 p-4 rounded-xl bg-surface-card border border-border-subtle">
+      <div className={`p-2 rounded-lg bg-surface-base ${color}`}>
+        <Icon className="w-[18px] h-[18px]" />
       </div>
-      <div>
-        <span className="text-xs font-medium text-text-muted uppercase tracking-wide">{label}</span>
-        <span className={`block text-2xl font-bold mt-0.5 ${color}`}>{value}</span>
+      <div className="flex items-baseline gap-2">
+        <span className={`text-xl font-bold ${color}`}>{value}</span>
+        <span className="text-[11px] font-medium text-text-muted uppercase tracking-wide">{label}</span>
       </div>
+      <span className={`ml-auto w-2 h-2 rounded-full ${dot}`} />
     </div>
   );
 }
