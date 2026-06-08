@@ -32,16 +32,14 @@ export function EnvVarManager({ botId }: { botId: string }) {
   const entries = envs || [];
 
   return (
-    <div className="p-8 space-y-6 max-w-2xl">
+    <div className="p-6 space-y-5 max-w-2xl">
       {/* Header */}
-      <div className="flex items-start gap-4 p-4 rounded-xl bg-accent-subtle">
-        <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0">
-          <Shield className="w-5 h-5 text-accent" />
-        </div>
+      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-accent-subtle border border-border-subtle">
+        <Shield className="w-5 h-5 text-accent shrink-0 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-text-primary">Environment variables</p>
-          <p className="text-xs text-text-secondary mt-1 leading-relaxed">
-            These values are encrypted at rest and injected into the bot process on startup. Restart the bot after making changes.
+          <p className="text-[13px] font-semibold text-text-primary">Environment variables</p>
+          <p className="text-[11px] text-text-secondary mt-1 leading-relaxed">
+            Encrypted at rest and injected on startup. Restart the bot after making changes.
           </p>
         </div>
       </div>
@@ -49,28 +47,28 @@ export function EnvVarManager({ botId }: { botId: string }) {
       {/* Add form */}
       <div className="flex gap-2">
         <div className="flex-1 space-y-1">
-          <label className="text-[11px] font-medium text-text-muted uppercase tracking-wide">Key</label>
+          <label className="text-[10px] font-medium text-text-muted uppercase tracking-wide">Key</label>
           <input
             type="text"
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder="DISCORD_TOKEN"
-            className="w-full px-3 py-2 rounded-lg bg-surface-base text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors font-mono"
+            className="w-full px-3 py-2 rounded-lg bg-surface-base border border-border-subtle text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors font-mono"
           />
         </div>
         <div className="flex-[2] space-y-1">
-          <label className="text-[11px] font-medium text-text-muted uppercase tracking-wide">Value</label>
+          <label className="text-[10px] font-medium text-text-muted uppercase tracking-wide">Value</label>
           <div className="flex gap-2">
             <input
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder="your-token-here"
-              className="flex-1 px-3 py-2 rounded-lg bg-surface-base text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors font-mono"
+              className="flex-1 px-3 py-2 rounded-lg bg-surface-base border border-border-subtle text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors font-mono"
             />
             <button
               onClick={add}
-              className="px-4 py-2 rounded-lg bg-accent text-accent-fg hover:bg-accent-hover transition-colors font-medium text-sm"
+              className="px-3 py-2 rounded-lg bg-accent text-accent-fg hover:bg-accent-hover transition-colors font-medium text-[13px]"
             >
               <Plus className="w-4 h-4" />
             </button>
@@ -79,7 +77,7 @@ export function EnvVarManager({ botId }: { botId: string }) {
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/5 border border-status-crashed/20 text-xs text-status-crashed">
+        <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/5 border border-border-subtle text-[11px] text-status-crashed">
           <AlertCircle className="w-4 h-4 shrink-0" />
           {error}
         </div>
@@ -88,33 +86,33 @@ export function EnvVarManager({ botId }: { botId: string }) {
       {/* List */}
       {entries.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-16 gap-3 text-text-muted">
-          <div className="w-14 h-14 rounded-2xl bg-surface-raised flex items-center justify-center">
-            <Variable className="w-7 h-7 text-text-muted" />
+          <div className="w-12 h-12 rounded-xl bg-surface-card border border-border-subtle flex items-center justify-center">
+            <Variable className="w-5 h-5 text-text-muted" />
           </div>
           <div className="text-center">
-            <p className="text-sm font-medium text-text-secondary">No environment variables</p>
-            <p className="text-xs text-text-muted mt-1">Add API keys, tokens, or config values above</p>
+            <p className="text-[13px] font-medium text-text-secondary">No environment variables</p>
+            <p className="text-[11px] text-text-muted mt-1">Add API keys, tokens, or config values above</p>
           </div>
         </div>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           {entries.map((env) => (
             <div
               key={env.id}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-raised hover:bg-surface-hover/50 transition-all group"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-surface-card border border-border-subtle hover:border-border-default transition-all group"
             >
-              <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                <Lock className="w-4 h-4 text-accent" />
+              <div className="w-8 h-8 rounded-lg bg-accent-subtle flex items-center justify-center shrink-0">
+                <Lock className="w-3.5 h-3.5 text-accent" />
               </div>
-              <code className="text-sm font-mono text-accent w-48 truncate">{env.key}</code>
-              <span className="flex-1 text-sm text-text-muted font-mono truncate">
+              <code className="text-[13px] font-mono text-accent w-44 truncate">{env.key}</code>
+              <span className="flex-1 text-[13px] text-text-muted font-mono truncate">
                 {"*".repeat(Math.min(env.valueEnc.length, 24))}
               </span>
               <button
                 onClick={() => remove(env.key)}
-                className="p-2 rounded-lg text-text-muted opacity-0 group-hover:opacity-100 hover:text-status-crashed hover:bg-red-500/10 transition-all"
+                className="p-1.5 rounded-md text-text-muted opacity-0 group-hover:opacity-100 hover:text-status-crashed hover:bg-red-500/10 transition-all"
               >
-                <Trash2 className="w-4 h-4" />
+                <Trash2 className="w-3.5 h-3.5" />
               </button>
             </div>
           ))}

@@ -18,21 +18,21 @@ export function SourceStep({ data, update }: Props) {
   const hasPath = !!data.path;
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-3">
-        <label className="text-sm font-semibold text-text-primary">Bot folder</label>
+    <div className="space-y-5">
+      <div className="space-y-2">
+        <label className="text-[13px] font-semibold text-text-primary">Bot folder</label>
         {hasPath ? (
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/5">
-            <div className="w-10 h-10 rounded-lg bg-emerald-500/15 flex items-center justify-center shrink-0">
-              <Check className="w-5 h-5 text-emerald-400" />
+          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-emerald-500/5 border border-border-subtle">
+            <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
+              <Check className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-text-primary truncate">{data.path}</p>
-              <p className="text-xs text-text-secondary">Folder selected</p>
+              <p className="text-[13px] font-medium text-text-primary truncate">{data.path}</p>
+              <p className="text-[11px] text-text-secondary">Folder selected</p>
             </div>
             <button
               onClick={pickFolder}
-              className="px-3 py-1.5 rounded-md text-xs font-medium bg-surface-base text-text-secondary hover:text-text-primary hover:bg-surface-hover transition-colors"
+              className="px-3 py-1.5 rounded-md text-[11px] font-medium bg-surface-base border border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-hover/50 transition-colors"
             >
               Change
             </button>
@@ -40,16 +40,16 @@ export function SourceStep({ data, update }: Props) {
         ) : (
           <button
             onClick={pickFolder}
-            className="flex items-center gap-3 w-full p-5 rounded-xl bg-surface-base text-text-secondary hover:text-accent hover:bg-accent-subtle transition-all group"
+            className="flex items-center gap-3 w-full p-4 rounded-xl bg-surface-base border border-border-subtle text-text-secondary hover:text-accent hover:bg-accent-subtle hover:border-accent/20 transition-all group"
           >
-            <div className="w-12 h-12 rounded-xl bg-surface-raised flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-              <Monitor className="w-6 h-6 text-text-muted group-hover:text-accent" />
+            <div className="w-10 h-10 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center group-hover:bg-accent-subtle group-hover:border-accent/20 transition-colors">
+              <Monitor className="w-5 h-5 text-text-muted group-hover:text-accent" />
             </div>
             <div className="text-left flex-1">
-              <p className="text-sm font-semibold">Choose a folder</p>
-              <p className="text-xs text-text-muted mt-0.5">Browse your machine to find your bot folder</p>
+              <p className="text-[13px] font-semibold">Choose a folder</p>
+              <p className="text-[11px] text-text-muted mt-px">Browse your machine to find your bot folder</p>
             </div>
-            <ChevronRight className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" />
+            <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />
           </button>
         )}
       </div>

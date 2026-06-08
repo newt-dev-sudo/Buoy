@@ -42,37 +42,37 @@ export function CloseDialog() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="w-full max-w-sm p-6 rounded-xl bg-surface-raised space-y-4">
+      <div className="w-full max-w-sm p-5 rounded-xl bg-surface-card border border-border-subtle space-y-3">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-            <X className="w-5 h-5 text-accent" />
+          <div className="w-9 h-9 rounded-lg bg-accent-subtle flex items-center justify-center">
+            <X className="w-4 h-4 text-accent" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-text-primary">Close Buoy?</h3>
-            <p className="text-sm text-text-secondary">Your bots will keep running in the system tray.</p>
+            <h3 className="text-[15px] font-semibold text-text-primary">Close Buoy?</h3>
+            <p className="text-[13px] text-text-secondary">Your bots will keep running in the system tray.</p>
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <button
             onClick={chooseMinimize}
-            className="flex items-center gap-3 w-full p-3 rounded-lg bg-surface-base hover:bg-accent-subtle transition-colors text-left"
+            className="flex items-center gap-3 w-full p-3 rounded-lg bg-surface-base border border-border-subtle hover:border-accent/30 hover:bg-accent-subtle transition-colors text-left"
           >
-            <Minimize2 className="w-5 h-5 text-accent shrink-0" />
+            <Minimize2 className="w-4 h-4 text-accent shrink-0" />
             <div>
-              <p className="text-sm font-medium text-text-primary">Minimize to tray</p>
-              <p className="text-xs text-text-secondary">Keep your bots running in the background</p>
+              <p className="text-[13px] font-medium text-text-primary">Minimize to tray</p>
+              <p className="text-[11px] text-text-secondary">Keep your bots running in the background</p>
             </div>
           </button>
 
           <button
             onClick={chooseQuit}
-            className="flex items-center gap-3 w-full p-3 rounded-lg bg-surface-base hover:bg-red-500/5 transition-colors text-left"
+            className="flex items-center gap-3 w-full p-3 rounded-lg bg-surface-base border border-border-subtle hover:border-red-500/30 hover:bg-red-500/5 transition-colors text-left"
           >
-            <Power className="w-5 h-5 text-status-crashed shrink-0" />
+            <Power className="w-4 h-4 text-status-crashed shrink-0" />
             <div>
-              <p className="text-sm font-medium text-text-primary">Quit Buoy</p>
-              <p className="text-xs text-text-secondary">Stop all bots and close the app</p>
+              <p className="text-[13px] font-medium text-text-primary">Quit Buoy</p>
+              <p className="text-[11px] text-text-secondary">Stop all bots and close the app</p>
             </div>
           </button>
         </div>
@@ -84,7 +84,7 @@ export function CloseDialog() {
             onChange={(e) => setRemember(e.target.checked)}
             className="w-4 h-4 rounded accent-accent"
           />
-          <span className="text-sm text-text-secondary">Remember my choice</span>
+          <span className="text-[13px] text-text-secondary">Remember my choice</span>
         </label>
       </div>
     </div>

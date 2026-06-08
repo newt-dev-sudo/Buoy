@@ -24,15 +24,15 @@ export function LogViewer({ botId }: { botId: string }) {
   return (
     <div className="flex flex-col h-full">
       {/* Toolbar */}
-      <div className="flex items-center gap-3 px-6 py-3 bg-surface-raised/30">
-        <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded-lg bg-surface-base focus-within:border-accent transition-colors">
-          <Search className="w-4 h-4 text-text-muted" />
+      <div className="flex items-center gap-2 px-5 py-2.5 border-b border-border-subtle">
+        <div className="flex items-center gap-2 flex-1 px-3 py-1.5 rounded-lg bg-surface-base border border-border-subtle focus-within:border-accent transition-colors">
+          <Search className="w-3.5 h-3.5 text-text-muted" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Filter logs..."
-            className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
+            className="flex-1 bg-transparent text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none"
           />
           {query && (
             <button onClick={() => setQuery("")} className="text-text-muted hover:text-text-primary">
@@ -40,9 +40,9 @@ export function LogViewer({ botId }: { botId: string }) {
             </button>
           )}
         </div>
-        <span className="text-xs text-text-muted font-mono">{filtered.length} lines</span>
-        <div className="h-5 w-px bg-border-default" />
-        <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-text-secondary hover:text-text-primary hover:bg-surface-hover transition-colors">
+        <span className="text-[11px] text-text-muted font-mono">{filtered.length} lines</span>
+        <div className="h-4 w-px bg-border-subtle" />
+        <button className="flex items-center gap-1 px-2.5 py-1.5 rounded-md text-[11px] font-medium text-text-secondary hover:text-text-primary hover:bg-surface-hover/50 transition-colors">
           <Download className="w-3.5 h-3.5" />
           Export
         </button>
@@ -51,7 +51,7 @@ export function LogViewer({ botId }: { botId: string }) {
             await clearBotLogs(botId);
             queryClient.invalidateQueries({ queryKey: ["logs", botId] });
           }}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-text-secondary hover:text-status-crashed hover:bg-red-500/10 transition-colors"
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-md text-[11px] font-medium text-text-secondary hover:text-status-crashed hover:bg-red-500/10 transition-colors"
         >
           <Trash2 className="w-3.5 h-3.5" />
           Clear
@@ -62,12 +62,12 @@ export function LogViewer({ botId }: { botId: string }) {
       <div ref={parentRef} className="flex-1 overflow-auto font-mono text-[13px]">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-text-muted gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-surface-base flex items-center justify-center">
-              <FileText className="w-7 h-7 text-text-muted" />
+            <div className="w-12 h-12 rounded-xl bg-surface-card border border-border-subtle flex items-center justify-center">
+              <FileText className="w-5 h-5 text-text-muted" />
             </div>
             <div className="text-center">
-              <p className="text-sm font-medium text-text-secondary">No logs yet</p>
-              <p className="text-xs text-text-muted mt-1">Start the bot to see real-time logs here</p>
+              <p className="text-[13px] font-medium text-text-secondary">No logs yet</p>
+              <p className="text-[11px] text-text-muted mt-1">Start the bot to see real-time logs here</p>
             </div>
           </div>
         ) : (
@@ -85,16 +85,16 @@ export function LogViewer({ botId }: { botId: string }) {
                     height: `${virtualItem.size}px`,
                     transform: `translateY(${virtualItem.start}px)`,
                   }}
-                  className="flex items-start gap-3 py-1.5 px-3 rounded-md hover:bg-surface-hover/30 transition-colors"
+                  className="flex items-start gap-3 py-1 px-3 rounded-md hover:bg-surface-hover/20 transition-colors"
                 >
-                  <span className="text-text-muted/60 shrink-0 w-[68px] tabular-nums text-[11px] mt-0.5">
+                  <span className="text-text-muted/50 shrink-0 w-[68px] tabular-nums text-[11px] mt-0.5">
                     {new Date(log.ts).toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" })}
                   </span>
                   <span
-                    className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                    className={`shrink-0 px-1.5 py-px rounded text-[10px] font-semibold uppercase tracking-wider ${
                       log.stream === "stderr"
-                        ? "bg-red-500/12 text-red-400"
-                        : "bg-emerald-500/12 text-emerald-400"
+                        ? "bg-red-500/10 text-red-400"
+                        : "bg-emerald-500/10 text-emerald-400"
                     }`}
                   >
                     {log.stream}
